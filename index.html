@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJJ Gi Fabric Calculator</title>
+    <meta name="description" content="Calculate fabric requirements for BJJ Gis based on Sialkot Factory Standards.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header>
+            <h1>BJJ Gi Fabric Calculator</h1>
+            <p>Sialkot Factory Standards</p>
+        </header>
+
+        <main class="calculator-grid">
+            <section class="input-section glass-panel">
+                <h2>Configuration</h2>
+                <form id="calc-form">
+                    <div class="form-group">
+                        <label for="orderQuantity">📦 Order Quantity (Gis)</label>
+                        <input type="number" id="orderQuantity" name="orderQuantity" placeholder="e.g., 100" required min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gsm">⚖️ Fabric GSM</label>
+                        <input type="number" id="gsm" name="gsm" placeholder="e.g., 450" required min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weightCategory">📂 Weight Category</label>
+                        <select id="weightCategory" name="weightCategory" required>
+                            <option value="" disabled selected>Select category...</option>
+                            <option value="Lightweight">Lightweight (≤ 450 GSM)</option>
+                            <option value="Heavyweight">Heavyweight (≥ 550 GSM)</option>
+                        </select>
+                    </div>
+
+                    <div id="error-message" class="error-banner hidden"></div>
+
+                    <button type="submit" class="calculate-btn">Calculate Requirements</button>
+                </form>
+                
+                <div class="reference-data">
+                    <h3>📊 Reference Data</h3>
+                    <ul>
+                        <li><strong>Roll Width:</strong> 59" (1.5m)</li>
+                        <li><strong>Waste Factor:</strong> 8%</li>
+                        <li><strong>Fabric per Gi:</strong> 3.2 sq meters</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="results-section glass-panel">
+                <h2>Calculation Results</h2>
+                
+                <div id="results-placeholder" class="results-placeholder">
+                    <p>Enter details and click calculate to see requirements.</p>
+                </div>
+
+                <div id="results-content" class="results-content hidden">
+                    <div class="result-card main-result">
+                        <h3>Total Fabric</h3>
+                        <div class="value" id="res-total">0.00</div>
+                        <div class="unit">sq meters</div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h3>Base Fabric</h3>
+                            <div class="value small" id="res-base">0.00</div>
+                            <div class="unit">sq meters</div>
+                        </div>
+                        <div class="result-card">
+                            <h3>Waste (8%)</h3>
+                            <div class="value small" id="res-waste">0.00</div>
+                            <div class="unit">sq meters</div>
+                        </div>
+                    </div>
+
+                    <div class="roll-requirements">
+                        <h3>Roll Requirements</h3>
+                        <p>Order <strong id="res-linear" class="highlight">0.00</strong> linear meters of <strong id="res-width">1.50</strong>m width fabric.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
